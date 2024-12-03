@@ -6,4 +6,5 @@
         <item name="colorPrimary">#228B22</item>
 
     </style>
+    <style name="Theme.Gorjeta" parent="Base.Theme.Gorjeta" />
 </resources>
