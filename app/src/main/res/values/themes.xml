@@ -3,7 +3,7 @@
     <style name="Base.Theme.Gorjeta" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">#228B22</item>
+        <item name="colorPrimary">@color/verde_medio</item>
 
     </style>
 

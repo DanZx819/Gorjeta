@@ -3,8 +3,14 @@
     <style name="Base.Theme.Gorjeta" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">#228B22</item>
-
+        <item name="colorPrimary">@color/verde_medio</item>
     </style>
+
+    <!-- Estilo personalizado para o Spinner -->
+    <style name="CustomSpinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/black</item> <!-- Cor do texto -->
+        <item name="android:background">@android:color/white</item> <!-- Cor de fundo -->
+    </style>
+
     <style name="Theme.Gorjeta" parent="Base.Theme.Gorjeta" />
 </resources>

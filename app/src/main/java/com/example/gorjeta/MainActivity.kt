@@ -1,6 +1,7 @@
 package com.example.gorjeta
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -35,9 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val edtPreco = findViewById<TextInputEditText>(R.id.edt_preco)
-        val tvResult = findViewById<TextView>(R.id.tv_result)
         val btnCalc = findViewById<Button>(R.id.btn_calc)
-        val tvResult2 = findViewById<TextView>(R.id.tv_result2)
         val btnReset = findViewById<Button>(R.id.btn_reset)
 
         val adapter = ArrayAdapter.createFromResource(
@@ -49,7 +48,9 @@ class MainActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerPeople.adapter = adapter
 
+
         var num_people = 0
+
         binding.spinnerPeople.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -96,9 +97,16 @@ class MainActivity : AppCompatActivity() {
                 val resultado1 = flPreco / num_people
                 val resultado2 = (resultado1 * percentage) / 100
                 val resultado3 = (flPreco * percentage / 100)
-                tvResult.text = "R$%.2f".format(resultado1)
-                tvResult2.text = "R$%.2f".format(resultado2)
-                binding.tvResult3.text = "R$%.2f".format(resultado3)
+
+                val intent = Intent(this, ResultadoActivity::class.java )
+                intent.apply {
+                    putExtra("resultado1", resultado1)
+                    putExtra("resultado2", resultado2)
+                    putExtra("resultado3", resultado3)
+                    putExtra("Total", flPreco)
+                }
+                startActivity(intent)
+
             } else {
                 Snackbar
                     .make(
@@ -110,11 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         btnReset.setOnClickListener() {
-            tvResult.text = "R$0,00"
-            tvResult2.text = "R$0,00"
-
             binding.edtPreco.setText("")
-            binding.tvResult3.text = "R$0,00"
             binding.rbOptionOne.isChecked = false
             binding.rbOptionTwo.isChecked = false
             binding.rbOptionThree.isChecked = false
