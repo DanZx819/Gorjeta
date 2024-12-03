@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
@@ -28,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Preço total da Conta"
-            android:textColor="@color/white"
             android:inputType="numberDecimal"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:hintTextColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,10 +54,10 @@
         android:id="@+id/textInputLayout"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/corners"
         app:boxBackgroundMode="none"
         app:hintEnabled="false"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -162,8 +163,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        tools:ignore="MissingConstraints"
-        android:background="@drawable/corners2">
+        android:background="@drawable/corners2"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView3"

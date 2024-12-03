@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val btnReset = findViewById<Button>(R.id.btn_reset)
 
 
-        btnCalc.setOnClickListener(){
+        btnCalc.setOnClickListener() {
             val StrPreco = edtPreco.text.toString()
             val StrPessoas = edtPessoas.text.toString()
             val StrGorjeta = edtGorjeta.text.toString()
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 val resultado2 = (resultado1 * flGorjeta) / 100
                 tvResult.text = "R$%.2f".format(resultado1)
                 tvResult2.text = "R$%.2f".format(resultado2, flGorjeta)
-            }else{
+            } else {
                 Snackbar
                     .make(
                         edtPreco,
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        btnReset.setOnClickListener(){
+        btnReset.setOnClickListener() {
             tvResult.text = ""
             tvResult2.text = ""
         }
