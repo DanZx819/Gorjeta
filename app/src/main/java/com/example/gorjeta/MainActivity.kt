@@ -34,65 +34,25 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        val edtpercentage = findViewById<TextInputEditText>(R.id.edt_percentage)
+        val edtPessoas = findViewById<TextInputEditText>(R.id.edt_pessoas)
         val edtPreco = findViewById<TextInputEditText>(R.id.edt_preco)
         val btnCalc = findViewById<Button>(R.id.btn_calc)
         val btnReset = findViewById<Button>(R.id.btn_reset)
 
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.num_people,
-            android.R.layout.simple_spinner_item
-        )
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerPeople.adapter = adapter
 
 
-        var num_people = 0
-
-        binding.spinnerPeople.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long)
-            {
-                num_people = position
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-        }
-
-        var percentage: Int = 0
-        binding.rbOptionOne.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
-                percentage = 10
-            }
-        }
-        binding.rbOptionTwo.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
-                percentage = 15
-            }
-        }
-        binding.rbOptionThree.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
-                percentage = 20
-            }
-        }
 
 
 
         btnCalc.setOnClickListener() {
             val StrPreco = edtPreco.text.toString()
-
-
-            if (StrPreco.isNotEmpty()  ) {
+            val StrPessoas = edtPessoas.text.toString()
+            val StrPercentage = edtpercentage.text.toString()
+            if (StrPreco.isNotEmpty() && StrPessoas.isNotEmpty() && StrPercentage.isNotEmpty()) {
                 val flPreco = StrPreco.toFloat()
+                val num_people = StrPessoas.toInt()
+                val percentage = StrPercentage.toInt()
 
                 val resultado1 = flPreco / num_people
                 val resultado2 = (resultado1 * percentage) / 100
@@ -104,7 +64,9 @@ class MainActivity : AppCompatActivity() {
                     putExtra("resultado2", resultado2)
                     putExtra("resultado3", resultado3)
                     putExtra("Total", flPreco)
+                    putExtra("Porcentagem", percentage)
                 }
+                clean()
                 startActivity(intent)
 
             } else {
@@ -118,10 +80,14 @@ class MainActivity : AppCompatActivity() {
 
         }
         btnReset.setOnClickListener() {
-            binding.edtPreco.setText("")
-            binding.rbOptionOne.isChecked = false
-            binding.rbOptionTwo.isChecked = false
-            binding.rbOptionThree.isChecked = false
+            clean()
         }
+
+
+    }
+    private fun clean(){
+        binding.edtPreco.setText("")
+        binding.edtPessoas.setText("")
+        binding.edtPercentage.setText("")
     }
 }
